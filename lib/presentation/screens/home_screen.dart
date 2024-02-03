@@ -43,11 +43,32 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
               const Spacer(),
-              Container(
+              SizedBox(
                 width: 200.0,
                 height: 300.0,
                 child: CustomPaint(
                   painter: CupPainter(),
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          "10 of 30ml",
+                          style: TextStyleHelper.lgText(
+                            weight: FontWeight.w900,
+                          ),
+                        ),
+                        Text(
+                          "consumed",
+                          style: TextStyleHelper.mdText(
+                            weight: FontWeight.w600,
+                            color: Colors.black54,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ),
               const Spacer(),
