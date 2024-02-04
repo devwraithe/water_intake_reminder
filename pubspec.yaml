@@ -82,3 +82,15 @@ flutter:
         - asset: assets/fonts/Helvetica-Light.ttf
         - asset: assets/fonts/Helvetica-Bold.ttf
         - asset: assets/fonts/Helvetica.ttf
+
+    - family: DM Sans
+      fonts:
+        - asset: assets/fonts/DMSans-Black.ttf
+        - asset: assets/fonts/DMSans-ExtraBold.ttf
+        - asset: assets/fonts/DMSans-Bold.ttf
+        - asset: assets/fonts/DMSans-SemiBold.ttf
+        - asset: assets/fonts/DMSans-Medium.ttf
+        - asset: assets/fonts/DMSans-Regular.ttf
+        - asset: assets/fonts/DMSans-Light.ttf
+        - asset: assets/fonts/DMSans-ExtraLight.ttf
+        - asset: assets/fonts/DMSans-Thin.ttf

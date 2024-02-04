@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         useMaterial3: true,
-        fontFamily: 'Helvetica',
+        fontFamily: 'DM Sans',
       ),
       home: const MyHomePage(),
     );

@@ -48,7 +48,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 300.0,
                 child: CustomPaint(
                   painter: CupPainter(),
-                  child: Center(
+                  child: Container(
+                    margin: const EdgeInsets.only(top: 6),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -62,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         Text(
                           "consumed",
                           style: TextStyleHelper.mdText(
-                            weight: FontWeight.w600,
+                            weight: FontWeight.w500,
                             color: Colors.black54,
                           ),
                         ),
