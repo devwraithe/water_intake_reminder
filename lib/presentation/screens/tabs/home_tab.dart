@@ -3,15 +3,15 @@ import 'package:water_intake_reminder/core/helpers/text_style_helper.dart';
 import 'package:water_intake_reminder/core/widgets/custom_button.dart';
 import 'package:water_intake_reminder/core/widgets/custom_chip.dart';
 
-import '../../core/widgets/cup_paint.dart';
+import '../../../core/widgets/cup_paint.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class HomeTab extends StatefulWidget {
+  const HomeTab({super.key});
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<HomeTab> createState() => _HomeTabState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomeTabState extends State<HomeTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

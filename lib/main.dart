@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:water_intake_reminder/presentation/screens/home_screen.dart';
+import 'package:water_intake_reminder/presentation/screens/dashboard_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'DM Sans',
       ),
-      home: const MyHomePage(),
+      home: const DashboardScreen(),
     );
   }
 }
