@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
+import 'package:water_intake_reminder/presentation/widgets/metric.dart';
 
 import '../../../core/helpers/text_style_helper.dart';
 
@@ -255,19 +256,19 @@ class _SettingsTabState extends State<SettingsTab> {
                 ],
               ),
               const SizedBox(height: 60),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  _metric(
-                    "ml (oz)",
-                    Colors.lightBlueAccent,
-                    Colors.white,
+                  Metric(
+                    value: "ml (oz)",
+                    btnColor: Colors.lightBlueAccent,
+                    textColor: Colors.white,
                   ),
-                  const SizedBox(width: 16),
-                  _metric(
-                    "oz (ml)",
-                    Colors.transparent,
-                    Colors.lightBlueAccent,
+                  SizedBox(width: 16),
+                  Metric(
+                    value: "oz (ml)",
+                    btnColor: Colors.transparent,
+                    textColor: Colors.lightBlueAccent,
                   ),
                 ],
               ),
@@ -276,39 +277,6 @@ class _SettingsTabState extends State<SettingsTab> {
           ),
         );
       },
-    );
-  }
-
-  _metric(
-    String value,
-    Color btnColor,
-    Color textColor,
-  ) {
-    return Expanded(
-      child: FilledButton(
-        onPressed: () {},
-        style: FilledButton.styleFrom(
-          minimumSize: const Size(
-            double.infinity,
-            48.6,
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-            side: const BorderSide(
-              color: Colors.lightBlueAccent,
-              width: 1.4,
-            ),
-          ),
-          backgroundColor: btnColor,
-        ),
-        child: Text(
-          value,
-          style: TextStyleHelper.mdText(
-            weight: FontWeight.w500,
-            color: textColor,
-          ),
-        ),
-      ),
     );
   }
 }
