@@ -4,6 +4,7 @@ import 'package:water_intake_reminder/core/helpers/text_style_helper.dart';
 import 'package:water_intake_reminder/core/widgets/custom_button.dart';
 import 'package:water_intake_reminder/core/widgets/custom_chip.dart';
 
+import '../../../core/helpers/constants.dart';
 import '../../../core/widgets/cup_paint.dart';
 import '../../widgets/metric.dart';
 
@@ -118,9 +119,9 @@ class _HomeTabState extends State<HomeTab> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Icon(
+                  Icon(
                     TablerIcons.circle_x_filled,
-                    color: Colors.lightBlueAccent,
+                    color: Constants.primaryColor,
                     size: 26,
                   ),
                   Text(
@@ -129,9 +130,9 @@ class _HomeTabState extends State<HomeTab> {
                       weight: FontWeight.w700,
                     ),
                   ),
-                  const Icon(
+                  Icon(
                     TablerIcons.circle_check_filled,
-                    color: Colors.lightBlueAccent,
+                    color: Constants.primaryColor,
                     size: 26,
                   ),
                 ],
@@ -215,9 +216,9 @@ class _HomeTabState extends State<HomeTab> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Icon(
+                  Icon(
                     TablerIcons.circle_x_filled,
-                    color: Colors.lightBlueAccent,
+                    color: Constants.primaryColor,
                     size: 26,
                   ),
                   Text(
@@ -226,9 +227,9 @@ class _HomeTabState extends State<HomeTab> {
                       weight: FontWeight.w700,
                     ),
                   ),
-                  const Icon(
+                  Icon(
                     TablerIcons.circle_check_filled,
-                    color: Colors.lightBlueAccent,
+                    color: Constants.primaryColor,
                     size: 26,
                   ),
                 ],
@@ -260,19 +261,19 @@ class _HomeTabState extends State<HomeTab> {
                 ),
               ),
               const SizedBox(height: 70),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Metric(
                     value: "ml to oz",
-                    btnColor: Colors.lightBlueAccent,
+                    btnColor: Constants.primaryColor,
                     textColor: Colors.white,
                   ),
-                  SizedBox(width: 16),
+                  const SizedBox(width: 16),
                   Metric(
                     value: "oz to ml",
                     btnColor: Colors.transparent,
-                    textColor: Colors.lightBlueAccent,
+                    textColor: Constants.primaryColor,
                   ),
                 ],
               ),

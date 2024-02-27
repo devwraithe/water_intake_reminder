@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../core/helpers/constants.dart';
 import '../../core/helpers/text_style_helper.dart';
 
 class Metric extends StatelessWidget {
@@ -25,8 +26,8 @@ class Metric extends StatelessWidget {
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
-            side: const BorderSide(
-              color: Colors.lightBlueAccent,
+            side: BorderSide(
+              color: Constants.primaryColor,
               width: 1.4,
             ),
           ),

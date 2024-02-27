@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:water_intake_reminder/core/helpers/constants.dart';
 import 'package:water_intake_reminder/presentation/screens/tabs/home_tab.dart';
 import 'package:water_intake_reminder/presentation/screens/tabs/logs_tab.dart';
 import 'package:water_intake_reminder/presentation/screens/tabs/settings_tab.dart';
@@ -55,7 +56,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       ),
       activeIcon: Icon(
         icon,
-        color: Colors.lightBlueAccent,
+        color: Constants.primaryColor,
         size: 26,
       ),
       label: label,

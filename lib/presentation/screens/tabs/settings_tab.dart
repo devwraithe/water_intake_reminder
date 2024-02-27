@@ -3,6 +3,7 @@ import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:water_intake_reminder/presentation/widgets/metric.dart';
 
+import '../../../core/helpers/constants.dart';
 import '../../../core/helpers/text_style_helper.dart';
 
 class SettingsTab extends StatefulWidget {
@@ -16,7 +17,7 @@ class _SettingsTabState extends State<SettingsTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlueAccent.withOpacity(0.1),
+      backgroundColor: Constants.primaryColor.withOpacity(0.1),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -51,10 +52,10 @@ class _SettingsTabState extends State<SettingsTab> {
         padding: const EdgeInsets.fromLTRB(16, 18, 14, 18),
         child: Row(
           children: [
-            const Icon(
+            Icon(
               Iconsax.cup,
               size: 36,
-              color: Colors.lightBlueAccent,
+              color: Constants.primaryColor,
             ),
             const SizedBox(width: 14),
             Expanded(
@@ -107,9 +108,9 @@ class _SettingsTabState extends State<SettingsTab> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Icon(
+                  Icon(
                     TablerIcons.circle_x_filled,
-                    color: Colors.lightBlueAccent,
+                    color: Constants.primaryColor,
                     size: 26,
                   ),
                   Text(
@@ -118,9 +119,9 @@ class _SettingsTabState extends State<SettingsTab> {
                       weight: FontWeight.w700,
                     ),
                   ),
-                  const Icon(
+                  Icon(
                     TablerIcons.circle_check_filled,
-                    color: Colors.lightBlueAccent,
+                    color: Constants.primaryColor,
                     size: 26,
                   ),
                 ],
@@ -182,10 +183,10 @@ class _SettingsTabState extends State<SettingsTab> {
                   children: [
                     Row(
                       children: [
-                        const Icon(
+                        Icon(
                           Iconsax.rulerpen,
                           size: 22,
-                          color: Colors.lightBlueAccent,
+                          color: Constants.primaryColor,
                         ),
                         const SizedBox(width: 12),
                         Text(
@@ -238,9 +239,9 @@ class _SettingsTabState extends State<SettingsTab> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Icon(
+                  Icon(
                     TablerIcons.circle_x_filled,
-                    color: Colors.lightBlueAccent,
+                    color: Constants.primaryColor,
                     size: 26,
                   ),
                   Text(
@@ -249,27 +250,27 @@ class _SettingsTabState extends State<SettingsTab> {
                       weight: FontWeight.w700,
                     ),
                   ),
-                  const Icon(
+                  Icon(
                     TablerIcons.circle_check_filled,
-                    color: Colors.lightBlueAccent,
+                    color: Constants.primaryColor,
                     size: 26,
                   ),
                 ],
               ),
               const SizedBox(height: 60),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Metric(
                     value: "ml (oz)",
-                    btnColor: Colors.lightBlueAccent,
+                    btnColor: Constants.primaryColor,
                     textColor: Colors.white,
                   ),
-                  SizedBox(width: 16),
+                  const SizedBox(width: 16),
                   Metric(
                     value: "oz (ml)",
                     btnColor: Colors.transparent,
-                    textColor: Colors.lightBlueAccent,
+                    textColor: Constants.primaryColor,
                   ),
                 ],
               ),

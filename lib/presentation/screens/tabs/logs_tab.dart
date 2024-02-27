@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/helpers/constants.dart';
 import '../../../core/helpers/text_style_helper.dart';
 
 class LogsTab extends StatefulWidget {
@@ -13,7 +14,7 @@ class _LogsTabState extends State<LogsTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlueAccent.withOpacity(0.1),
+      backgroundColor: Constants.primaryColor.withOpacity(0.1),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
