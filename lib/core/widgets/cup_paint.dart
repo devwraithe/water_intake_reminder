@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import '../helpers/constants.dart';
+
 class CupPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
@@ -12,7 +14,7 @@ class CupPainter extends CustomPainter {
     var center = Offset(centerX, centerY);
 
     Paint secProgressBrush = Paint()
-      ..color = Colors.lightBlueAccent
+      ..color = Constants.primaryColor
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke
       ..strokeWidth = 7;
@@ -24,7 +26,7 @@ class CupPainter extends CustomPainter {
       ..strokeWidth = 16;
 
     Paint progressBrush = Paint()
-      ..color = Colors.lightBlueAccent
+      ..color = Constants.primaryColor
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke
       ..strokeWidth = 16;

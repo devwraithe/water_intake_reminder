@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../helpers/constants.dart';
 import '../helpers/text_style_helper.dart';
 
 class CustomChip extends StatelessWidget {
@@ -14,7 +15,7 @@ class CustomChip extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.lightBlueAccent,
+        color: Constants.primaryColor,
         borderRadius: BorderRadius.circular(40),
       ),
       padding: const EdgeInsets.fromLTRB(12, 8, 12, 6),

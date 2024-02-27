@@ -4,7 +4,9 @@ import 'package:water_intake_reminder/core/helpers/text_style_helper.dart';
 import 'package:water_intake_reminder/core/widgets/custom_button.dart';
 import 'package:water_intake_reminder/core/widgets/custom_chip.dart';
 
+import '../../../core/helpers/constants.dart';
 import '../../../core/widgets/cup_paint.dart';
+import '../../widgets/metric.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
@@ -89,7 +91,7 @@ class _HomeTabState extends State<HomeTab> {
                   const SizedBox(width: 16),
                   Expanded(
                     child: CustomButton(
-                      onPressed: () => _customIntake(),
+                      onPressed: () => _setWaterGoal(),
                     ),
                   ),
                 ],
@@ -117,9 +119,9 @@ class _HomeTabState extends State<HomeTab> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Icon(
+                  Icon(
                     TablerIcons.circle_x_filled,
-                    color: Colors.lightBlueAccent,
+                    color: Constants.primaryColor,
                     size: 26,
                   ),
                   Text(
@@ -128,9 +130,9 @@ class _HomeTabState extends State<HomeTab> {
                       weight: FontWeight.w700,
                     ),
                   ),
-                  const Icon(
+                  Icon(
                     TablerIcons.circle_check_filled,
-                    color: Colors.lightBlueAccent,
+                    color: Constants.primaryColor,
                     size: 26,
                   ),
                 ],
@@ -188,6 +190,90 @@ class _HomeTabState extends State<HomeTab> {
                     child: CustomButton(
                       onPressed: () => _customIntake(),
                     ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  // Sheet to set the water goal (first timers)
+  _setWaterGoal() {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 28,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Icon(
+                    TablerIcons.circle_x_filled,
+                    color: Constants.primaryColor,
+                    size: 26,
+                  ),
+                  Text(
+                    "Set Daily Goal",
+                    style: TextStyleHelper.hlText(
+                      weight: FontWeight.w700,
+                    ),
+                  ),
+                  Icon(
+                    TablerIcons.circle_check_filled,
+                    color: Constants.primaryColor,
+                    size: 26,
+                  ),
+                ],
+              ),
+              const SizedBox(height: 60),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "1,478",
+                    style: TextStyleHelper.hllText(
+                      weight: FontWeight.w700,
+                    ),
+                  ),
+                  Text(
+                    "ml",
+                    style: TextStyleHelper.hllText(
+                      weight: FontWeight.w700,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ],
+              ),
+              Text(
+                "(50oz)",
+                style: TextStyleHelper.lgText(
+                  weight: FontWeight.w500,
+                  color: Colors.grey,
+                ),
+              ),
+              const SizedBox(height: 70),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Metric(
+                    value: "ml to oz",
+                    btnColor: Constants.primaryColor,
+                    textColor: Colors.white,
+                  ),
+                  const SizedBox(width: 16),
+                  Metric(
+                    value: "oz to ml",
+                    btnColor: Colors.transparent,
+                    textColor: Constants.primaryColor,
                   ),
                 ],
               ),

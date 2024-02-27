@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:water_intake_reminder/core/helpers/constants.dart';
 import 'package:water_intake_reminder/presentation/screens/tabs/home_tab.dart';
 import 'package:water_intake_reminder/presentation/screens/tabs/logs_tab.dart';
 import 'package:water_intake_reminder/presentation/screens/tabs/settings_tab.dart';
@@ -34,9 +35,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
         selectedLabelStyle: const TextStyle(height: 0.86),
         unselectedLabelStyle: const TextStyle(height: 0.86),
         items: [
-          _bottomNavItem(TablerIcons.droplet, "Dashboard"),
-          _bottomNavItem(TablerIcons.notes, "Logs"),
-          _bottomNavItem(TablerIcons.settings, "Settings"),
+          _bottomNavItem(Iconsax.coffee, "Dashboard"),
+          _bottomNavItem(Iconsax.chart, "Logs"),
+          _bottomNavItem(Iconsax.setting_2, "Settings"),
         ],
         onTap: (index) {
           setState(() => _selectedTab = index);
@@ -55,7 +56,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       ),
       activeIcon: Icon(
         icon,
-        color: Colors.lightBlueAccent,
+        color: Constants.primaryColor,
         size: 26,
       ),
       label: label,

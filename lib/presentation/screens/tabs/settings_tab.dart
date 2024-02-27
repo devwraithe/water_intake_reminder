@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:water_intake_reminder/presentation/widgets/metric.dart';
 
+import '../../../core/helpers/constants.dart';
 import '../../../core/helpers/text_style_helper.dart';
 
 class SettingsTab extends StatefulWidget {
@@ -14,7 +17,7 @@ class _SettingsTabState extends State<SettingsTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlueAccent.withOpacity(0.1),
+      backgroundColor: Constants.primaryColor.withOpacity(0.1),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -49,12 +52,12 @@ class _SettingsTabState extends State<SettingsTab> {
         padding: const EdgeInsets.fromLTRB(16, 18, 14, 18),
         child: Row(
           children: [
-            const Icon(
-              TablerIcons.cup,
-              size: 42,
-              color: Colors.lightBlueAccent,
+            Icon(
+              Iconsax.cup,
+              size: 36,
+              color: Constants.primaryColor,
             ),
-            const SizedBox(width: 12),
+            const SizedBox(width: 14),
             Expanded(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -64,8 +67,8 @@ class _SettingsTabState extends State<SettingsTab> {
                     children: [
                       Text(
                         "James",
-                        style: TextStyleHelper.hlText(
-                          weight: FontWeight.w600,
+                        style: TextStyleHelper.lgText(
+                          weight: FontWeight.w700,
                         ),
                       ),
                       Text(
@@ -105,9 +108,9 @@ class _SettingsTabState extends State<SettingsTab> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Icon(
+                  Icon(
                     TablerIcons.circle_x_filled,
-                    color: Colors.lightBlueAccent,
+                    color: Constants.primaryColor,
                     size: 26,
                   ),
                   Text(
@@ -116,9 +119,9 @@ class _SettingsTabState extends State<SettingsTab> {
                       weight: FontWeight.w700,
                     ),
                   ),
-                  const Icon(
+                  Icon(
                     TablerIcons.circle_check_filled,
-                    color: Colors.lightBlueAccent,
+                    color: Constants.primaryColor,
                     size: 26,
                   ),
                 ],
@@ -180,10 +183,10 @@ class _SettingsTabState extends State<SettingsTab> {
                   children: [
                     Row(
                       children: [
-                        const Icon(
-                          TablerIcons.ruler_measure,
+                        Icon(
+                          Iconsax.rulerpen,
                           size: 22,
-                          color: Colors.lightBlueAccent,
+                          color: Constants.primaryColor,
                         ),
                         const SizedBox(width: 12),
                         Text(
@@ -236,9 +239,9 @@ class _SettingsTabState extends State<SettingsTab> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Icon(
+                  Icon(
                     TablerIcons.circle_x_filled,
-                    color: Colors.lightBlueAccent,
+                    color: Constants.primaryColor,
                     size: 26,
                   ),
                   Text(
@@ -247,9 +250,9 @@ class _SettingsTabState extends State<SettingsTab> {
                       weight: FontWeight.w700,
                     ),
                   ),
-                  const Icon(
+                  Icon(
                     TablerIcons.circle_check_filled,
-                    color: Colors.lightBlueAccent,
+                    color: Constants.primaryColor,
                     size: 26,
                   ),
                 ],
@@ -258,16 +261,16 @@ class _SettingsTabState extends State<SettingsTab> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  _metric(
-                    "ml (oz)",
-                    Colors.lightBlueAccent,
-                    Colors.white,
+                  Metric(
+                    value: "ml (oz)",
+                    btnColor: Constants.primaryColor,
+                    textColor: Colors.white,
                   ),
                   const SizedBox(width: 16),
-                  _metric(
-                    "oz (ml)",
-                    Colors.transparent,
-                    Colors.lightBlueAccent,
+                  Metric(
+                    value: "oz (ml)",
+                    btnColor: Colors.transparent,
+                    textColor: Constants.primaryColor,
                   ),
                 ],
               ),
@@ -276,39 +279,6 @@ class _SettingsTabState extends State<SettingsTab> {
           ),
         );
       },
-    );
-  }
-
-  _metric(
-    String value,
-    Color btnColor,
-    Color textColor,
-  ) {
-    return Expanded(
-      child: FilledButton(
-        onPressed: () {},
-        style: FilledButton.styleFrom(
-          minimumSize: const Size(
-            double.infinity,
-            48.6,
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-            side: const BorderSide(
-              color: Colors.lightBlueAccent,
-              width: 1.4,
-            ),
-          ),
-          backgroundColor: btnColor,
-        ),
-        child: Text(
-          value,
-          style: TextStyleHelper.mdText(
-            weight: FontWeight.w500,
-            color: textColor,
-          ),
-        ),
-      ),
     );
   }
 }
