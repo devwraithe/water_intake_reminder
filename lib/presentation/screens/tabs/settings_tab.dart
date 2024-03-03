@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:water_intake_reminder/core/helpers/calculations_helpe.dart';
+import 'package:water_intake_reminder/core/helpers/icon_helper.dart';
+import 'package:water_intake_reminder/presentation/cubits/daily_goal/daily_goal_cubit.dart';
+import 'package:water_intake_reminder/presentation/cubits/daily_goal/daily_goal_state.dart';
 import 'package:water_intake_reminder/presentation/widgets/metric.dart';
 
 import '../../../core/helpers/constants.dart';
 import '../../../core/helpers/text_style_helper.dart';
+import '../../../domain/entities/user.dart';
+import '../../cubits/save_user/save_user_cubit.dart';
 
 class SettingsTab extends StatefulWidget {
   const SettingsTab({super.key});
@@ -14,6 +21,15 @@ class SettingsTab extends StatefulWidget {
 }
 
 class _SettingsTabState extends State<SettingsTab> {
+  String? name;
+  int? goal;
+
+  @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<GetUserCubit>(context).getUser();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,6 +53,9 @@ class _SettingsTabState extends State<SettingsTab> {
     );
   }
 
+  int dailyGoal = 0;
+  final TextEditingController goalController = TextEditingController();
+
   _dailyGoal() {
     return GestureDetector(
       onTap: () => _setDailyGoal(),
@@ -50,43 +69,60 @@ class _SettingsTabState extends State<SettingsTab> {
           ),
         ),
         padding: const EdgeInsets.fromLTRB(16, 18, 14, 18),
-        child: Row(
-          children: [
-            Icon(
-              Iconsax.cup,
-              size: 36,
-              color: Constants.primaryColor,
-            ),
-            const SizedBox(width: 14),
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "James",
-                        style: TextStyleHelper.lgText(
-                          weight: FontWeight.w700,
-                        ),
-                      ),
-                      Text(
-                        "Your Daily Goal: 100ml",
-                        style: TextStyleHelper.mdText(
-                          color: Colors.grey[600]!,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Icon(
-                    TablerIcons.chevron_right,
-                    color: Colors.grey[400]!,
-                  ),
-                ],
+        child: BlocListener<GetUserCubit, GetUserState>(
+          listener: (context, state) {
+            if (state is GetUserLoading) {
+              debugPrint("Loading...");
+            } else if (state is GetUserResponse) {
+              setState(() {
+                name = state.user.name;
+                goal = state.user.dailyGoal;
+                goalController.text = goal.toString();
+              });
+            } else if (state is GetUserError) {
+              debugPrint("Daily Goal Error - ${state.message}");
+            } else {
+              debugPrint("Something went wrong...");
+            }
+          },
+          child: Row(
+            children: [
+              Icon(
+                Iconsax.cup,
+                size: 36,
+                color: Constants.primaryColor,
               ),
-            ),
-          ],
+              const SizedBox(width: 14),
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          name ?? "N/A",
+                          style: TextStyleHelper.lgText(
+                            weight: FontWeight.w700,
+                          ),
+                        ),
+                        Text(
+                          "Your Daily Goal: ${goal}ml",
+                          style: TextStyleHelper.mdText(
+                            color: Colors.grey[600]!,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Icon(
+                      TablerIcons.chevron_right,
+                      color: Colors.grey[400]!,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -94,6 +130,12 @@ class _SettingsTabState extends State<SettingsTab> {
 
   // Sheet to set daily goal
   _setDailyGoal() {
+    // Store daily goal in database
+    saveDailyGoal() async {
+      final user = User()..dailyGoal = int.tryParse(goalController.text);
+      await context.read<SaveUserCubit>().saveUser(user);
+    }
+
     showModalBottomSheet(
       context: context,
       builder: (context) {
@@ -108,51 +150,41 @@ class _SettingsTabState extends State<SettingsTab> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(
-                    TablerIcons.circle_x_filled,
-                    color: Constants.primaryColor,
-                    size: 26,
-                  ),
+                  IconHelper.closeIcon(context),
                   Text(
                     "Set Daily Goal",
                     style: TextStyleHelper.hlText(
                       weight: FontWeight.w700,
                     ),
                   ),
-                  Icon(
-                    TablerIcons.circle_check_filled,
-                    color: Constants.primaryColor,
-                    size: 26,
-                  ),
+                  IconHelper.doneIcon(() {
+                    saveDailyGoal();
+                    Navigator.pop(context);
+                  }),
                 ],
               ),
               const SizedBox(height: 60),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "1,478",
-                    style: TextStyleHelper.hllText(
-                      weight: FontWeight.w700,
-                    ),
-                  ),
-                  Text(
-                    "ml",
-                    style: TextStyleHelper.hllText(
-                      weight: FontWeight.w700,
-                      color: Colors.grey,
-                    ),
-                  ),
-                ],
+              TextField(
+                controller: goalController,
+                textAlign: TextAlign.center,
+                style: TextStyleHelper.hllText(
+                  weight: FontWeight.w700,
+                ),
+                decoration: const InputDecoration(
+                  border: InputBorder.none,
+                  enabledBorder: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                  contentPadding: EdgeInsets.zero,
+                ),
               ),
               Text(
-                "(50oz)",
+                "ml (${CalculationsHelper.mlToOz(goal!.toDouble())}oz)",
                 style: TextStyleHelper.lgText(
                   weight: FontWeight.w500,
                   color: Colors.grey,
                 ),
               ),
-              const SizedBox(height: 60),
+              const SizedBox(height: 70),
             ],
           ),
         );

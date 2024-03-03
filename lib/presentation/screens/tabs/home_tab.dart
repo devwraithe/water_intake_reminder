@@ -91,7 +91,7 @@ class _HomeTabState extends State<HomeTab> {
                   const SizedBox(width: 16),
                   Expanded(
                     child: CustomButton(
-                      onPressed: () => _setWaterGoal(),
+                      onPressed: () => _customIntake(),
                     ),
                   ),
                 ],
